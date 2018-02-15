@@ -44,19 +44,19 @@ let handleWeatherResponse = function(response) {
   window.response = response
 
   // **** your code starts here - don't modify anything else. you will be sad.
-$(".row").empty();
+$(".weather").empty();
 for (var i = 0; i < response.daily.length; i++) {
   let weather = response.daily[i];
   let html = '<div class="col">';
   html = html + '<div class="card">';
-  html = html + '<h1 id="current-conditions-icon"> Testing </h1>';
+  html = html + '<h1 id="current-conditions-icon">' + weather.icon +  '</h1>';
   html = html + '<div class="card-body">';
-  html = html + '<h1 id="location"> Test </h1>';
-  html = html + '<h2 id="current-conditions-text"> test </h2>';
+  html = html + '<h1 id="location">' + weather.timezone + '</h1>';
+  html = html + '<h2 id="current-conditions-text">' + weather.summary + '</h2>';
   html = html + '</div></div></div>';
-  $(".row").append(html);
+  $(".weather").append(html);
 }
-$(".row").fadeIn();
+$(".weather").fadeIn();
 
   // *** your code ends here -- really.
 };
