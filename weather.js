@@ -49,10 +49,10 @@ for (var i = 0; i < response.daily.length; i++) {
   let weather = response.daily[i];
   let html = '<div class="col">';
   html = html + '<div class="card">';
-  html = html + '<h1 id="current-conditions-icon">Test</h1>';
+  html = html + '<h1 id="current-conditions-icon"> Testing </h1>';
   html = html + '<div class="card-body">';
-  html = html + '<h1 id="location">Test</h1>';
-  html = html + '<h2 id="current-conditions-text">test</h2>';
+  html = html + '<h1 id="location"> Test </h1>';
+  html = html + '<h2 id="current-conditions-text"> test </h2>';
   html = html + '</div></div></div>';
   $(".row").append(html);
 }
