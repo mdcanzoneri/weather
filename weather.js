@@ -56,22 +56,17 @@ let currentWeather = response.currently;
 
 
 
-// $(".forecast").empty();
-// for (let i = 0; i < response.daily.data.length; i++) {
-//   let weather = response.daily.data[i];
-//   console.log(weather);
-//   let html = '<div class="forecast">';
-//   // html = html + '<div class="card">';
-//   html = html + '<h3 id="forecast-icon">' + icon(weather.icon) +  '</h3>';
-//   console.log(weather.icon);
-//   // html = html + '<div class="card-body">';
-//   html = html + '<h1 id="location"></h1>';
-//   html = html + '<h5 id="forecast-conditions">' + weather.summary + '</h5>';
-//   html = html + '</div></div></div>';
-//   // console.log(html);
-//   $(".forecast").append(html);
-// }
-// $(".forecast").fadeIn(1000);
+$(".forecast").empty();
+  for (let i = 0; i < response.daily.data.length; i++) {
+  let weather = response.daily.data[i];
+  let html = '<div class="row forecast" style="display:none">';
+    html = html + '<h3 id="forecast-icon">' + icon(weather.icon) +  '</h3>';
+    html = html + '<h1 id="location">' + '</h1>';
+    html = html + '<h5 id="forecast-conditions">' + weather.summary + '</h5>';
+    html = html + '</div>';
+  $(".forecast").append(html);
+$(".forecast").fadeIn(1000);
+};
 
   // *** your code ends here -- really.
 };
