@@ -44,29 +44,34 @@ let handleWeatherResponse = function(response) {
   window.response = response
 
   // **** your code starts here - don't modify anything else. you will be sad.
-// let weather = response.daily.data[0];
-//   $("#current-conditions-text").html(weather.summary);
+$(".current").empty();
+let currentWeather = response.currently;
+  let html = '<div class="col current">';
+    html = html + '<h1 id="current-conditions-icon">' + icon(currentWeather.icon) + '</h1>';
+    html = html + '<h1 id="location">' + '</h1>';
+    html = html + '<h2 id="current-conditions-text">' + currentWeather.summary + '</h2>';
+    html = html + '</div>';
+  $(".current").append(html);
+  $(".current").fadeIn(1000);
+
+
+
+// $(".forecast").empty();
+// for (let i = 0; i < response.daily.data.length; i++) {
+//   let weather = response.daily.data[i];
 //   console.log(weather);
-
-
-
-console.log(response.daily.data.length);
-$(".forecast").empty();
-for (let i = 0; i < response.daily.data.length; i++) {
-  let weather = response.daily.data[i];
-  console.log(weather);
-  let html = '<div class="col">';
-  html = html + '<div class="card">';
-  html = html + '<h1 id="current-conditions-icon">' + weather.icon +  '</h1>';
-  console.log(weather.icon);
-  html = html + '<div class="card-body">';
-  html = html + '<h1 id="location">' + weather.timezone + '</h1>';
-  html = html + '<h2 id="current-conditions-text">' + weather.summary + '</h2>';
-  html = html + '</div></div></div>';
-  // console.log(html);
-  $(".forecast").append(html);
-}
-$(".forecast").fadeIn();
+//   let html = '<div class="forecast">';
+//   // html = html + '<div class="card">';
+//   html = html + '<h3 id="forecast-icon">' + icon(weather.icon) +  '</h3>';
+//   console.log(weather.icon);
+//   // html = html + '<div class="card-body">';
+//   html = html + '<h1 id="location"></h1>';
+//   html = html + '<h5 id="forecast-conditions">' + weather.summary + '</h5>';
+//   html = html + '</div></div></div>';
+//   // console.log(html);
+//   $(".forecast").append(html);
+// }
+// $(".forecast").fadeIn(1000);
 
   // *** your code ends here -- really.
 };
