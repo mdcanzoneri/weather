@@ -48,21 +48,21 @@ $("#current-conditions-icon").empty();
 let currentWeather = response.currently;
 $("#current-conditions-icon").append(icon(currentWeather.icon));
 $("#current-conditions-text").empty();
-$("#current-conditions-text").append('<p>' + currentWeather.temperature + " Degrees Fahrenheit" + '</p>');
+$("#current-conditions-text").append('<p>' + Math.round(currentWeather.temperature) + " Degrees" + '</p>');
 $("#current-conditions-text").append('<p>' + currentWeather.summary + '</p>');
 $(".forecast").empty();
-  for (let i=0; i<8; i++) {
-    let forecast = response.daily.data[i];
-    let html = '<div class="col forecast">';
-      html = html + '<h3 id="current-conditions-icon">' + icon(forecast.icon) + '</h3>';
-      html = html + '<h4 id="current-conditions-icon">' + forecast.temperatureHigh + ' | ' + forecast.temperatureLow + '</h4>';
-      html = html + '<h5 id="current-conditions-text">' + forecast.summary + '</h5>';
+  for (let i = 0; i < 7; i++) {
+    let upcomingWeather = response.daily.data[i];
+    let html = '<div class="col">';
+      html = html + '<h3 id="current-conditions-icon">' + icon(upcomingWeather.icon) + '</h3>';
+      html = html + '<h4 id="current-conditions-icon">' + Math.round(upcomingWeather.temperatureHigh) + ' | ' + Math.round(upcomingWeather.temperatureLow) + '</h4>';
+      html = html + '<h5 id="current-conditions-text">' + upcomingWeather.summary + '</h5>';
       html = html + '</div></div></div>'
     $(".forecast").append(html);
   }
 
-$(".current").fadeIn(500);
-$(".forecast").fadeIn(1000);
+$(".current").fadeIn(750);
+$(".forecast").fadeIn(1250);
 
   // *** your code ends here -- really.
 };
