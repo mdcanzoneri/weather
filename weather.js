@@ -44,29 +44,25 @@ let handleWeatherResponse = function(response) {
   window.response = response
 
   // **** your code starts here - don't modify anything else. you will be sad.
-$(".current").empty();
+$("#current-conditions-icon").empty();
 let currentWeather = response.currently;
-  let html = '<div class="col current">';
-    html = html + '<h1 id="current-conditions-icon">' + icon(currentWeather.icon) + '</h1>';
-    html = html + '<h1 id="location">' + '</h1>';
-    html = html + '<h2 id="current-conditions-text">' + currentWeather.summary + '</h2>';
-    html = html + '</div>';
-  $(".current").append(html);
-  $(".current").fadeIn(1000);
-
-
-
+$("#current-conditions-icon").append(icon(currentWeather.icon));
+$("#current-conditions-text").empty();
+$("#current-conditions-text").append('<p>' + currentWeather.temperature + " Degrees Fahrenheit" + '</p>');
+$("#current-conditions-text").append('<p>' + currentWeather.summary + '</p>');
 $(".forecast").empty();
-  for (let i = 0; i < response.daily.data.length; i++) {
-  let weather = response.daily.data[i];
-  let html = '<div class="row forecast" style="display:none">';
-    html = html + '<h3 id="forecast-icon">' + icon(weather.icon) +  '</h3>';
-    html = html + '<h1 id="location">' + '</h1>';
-    html = html + '<h5 id="forecast-conditions">' + weather.summary + '</h5>';
-    html = html + '</div>';
-  $(".forecast").append(html);
+  for (let i=0; i<8; i++) {
+    let forecast = response.daily.data[i];
+    let html = '<div class="col forecast">';
+      html = html + '<h3 id="current-conditions-icon">' + icon(forecast.icon) + '</h3>';
+      html = html + '<h4 id="current-conditions-icon">' + forecast.temperatureHigh + ' | ' + forecast.temperatureLow + '</h4>';
+      html = html + '<h5 id="current-conditions-text">' + forecast.summary + '</h5>';
+      html = html + '</div></div></div>'
+    $(".forecast").append(html);
+  }
+
+$(".current").fadeIn(500);
 $(".forecast").fadeIn(1000);
-};
 
   // *** your code ends here -- really.
 };
